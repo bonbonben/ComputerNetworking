@@ -1,0 +1,134 @@
+R2:
+sudo su
+vtysh
+configure terminal
+interface eth1
+ip address 10.10.11.1/30
+end
+write
+exit
+
+vtysh
+configure terminal
+ip route 10.10.11.0/30 eth1
+end
+write
+exit
+
+ifconfig eth1 up
+
+sudo su
+vtysh
+configure terminal
+interface eth2
+ip address 10.10.11.5/30
+end
+write
+exit
+
+vtysh
+configure terminal
+ip route 10.10.11.4/30 eth2
+end
+write
+exit
+
+ifconfig eth2 up
+
+
+R3:
+sudo su
+vtysh
+configure terminal
+interface eth0
+ip address 10.10.11.2/30
+end
+write
+exit
+
+vtysh
+configure terminal
+ip route 10.10.11.0/30 eth0
+end
+write
+exit
+
+ifconfig eth0 up
+
+sudo su
+vtysh
+configure terminal
+interface eth1
+ip address 10.10.11.9/30
+end
+write
+exit
+
+vtysh
+configure terminal
+ip route 10.10.11.8/30 eth1
+end
+write
+exit
+
+ifconfig eth1 up
+
+
+R4:
+sudo su
+vtysh
+configure terminal
+interface eth0
+ip address 10.10.11.10/30
+end
+write
+exit
+
+vtysh
+configure terminal
+ip route 10.10.11.8/30 eth0
+end
+write
+exit
+
+ifconfig eth0 up
+
+sudo su
+vtysh
+configure terminal
+interface eth1
+ip address 10.10.11.6/30
+end
+write
+exit
+
+vtysh
+configure terminal
+ip route 10.10.11.4/30 eth1
+end
+write
+exit
+
+ifconfig eth1 up
+
+sudo su
+vtysh
+configure terminal
+interface eth2
+ip address 10.10.11.13/30
+end
+write
+exit
+
+vtysh
+configure terminal
+ip route 10.10.11.12/30 eth2
+end
+write
+exit
+
+ifconfig eth2 up
+
+
+ifconfig eth?
+arp -a

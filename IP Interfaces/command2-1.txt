@@ -1,0 +1,53 @@
+R1:
+sudo su
+vtysh
+configure terminal
+interface eth1
+ip address 10.10.10.1/29
+end
+write
+exit
+
+vtysh
+configure terminal
+ip route 10.10.10.0/29 eth1
+end
+write
+exit
+
+ifconfig eth1 up
+
+
+R2:
+sudo su
+vtysh
+configure terminal
+interface eth0
+ip address 10.10.10.2/29
+end
+write
+exit
+
+vtysh
+configure terminal
+ip route 10.10.10.0/29 eth0
+end
+write
+exit
+
+ifconfig eth0 up
+
+
+kali:
+auto eth0
+iface eth0 inet static
+address 10.10.10.3
+netmask 255.255.255.247
+network 10.10.10.0
+broadcast 10.10.10.7
+
+reboot
+
+
+ifconfig eth?
+arp -a
