@@ -1,0 +1,21 @@
+R4:
+sudo su
+vtysh
+configure terminal
+interface eth2
+ip address 10.10.11.17/28
+end
+write
+exit
+
+ifconfig eth2 up
+
+
+subnet 10.10.11.16 netmask 255.255.255.240 {
+	range 10.10.11.17 10.10.11.30;
+	option subnet-mask 255.255.255.240;
+	option routers 10.10.11.17;
+	option broadcast-address 10.10.11.31;
+	default-lease-time 600;
+	max-lease-time 7200;
+}
