@@ -1,0 +1,66 @@
+R1:
+sudo su
+vtysh
+configure terminal
+router ospf
+network 10.10.10.0/29 area 0
+network 10.20.1.0/24 area 0
+end
+write
+exit
+
+
+R2:
+sudo su
+vtysh
+configure terminal
+router ospf
+network 10.10.10.0/29 area 0
+network 10.10.11.0/28 area 1
+end
+write
+exit
+
+
+R3:
+sudo su
+vtysh
+configure terminal
+router ospf
+network 10.10.11.0/28 area 1
+end
+write
+exit
+
+
+R4:
+sudo su
+vtysh
+configure terminal
+router ospf
+network 10.10.11.0/28 area 1
+end
+write
+exit
+
+vtysh
+configure terminal
+router ospf
+no passive-interface eth2
+end
+write
+exit
+
+
+R1:
+vtysh
+configure terminal
+router ospf
+default-information originate always
+end
+write
+exit
+
+
+ping 10.20.1.58
+ping 128.238.77.36
